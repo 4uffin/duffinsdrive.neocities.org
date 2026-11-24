@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Duffin's Drive</title>
+  </head>
+  <body>
+    <header>
+      <h1>Duffin's Drive</h1>
+      <p>A public drive (for me)</p>
+    </header>
+
+    <hr />
+
+    <div id="file-system">
+      <details open>
+        <summary title="root/"><strong>root/</strong></summary>
+
+        <ul>
+          <li>
+            <details>
+              <summary title="documents/">documents/</summary>
+
+              <details>
+                <summary title="ai-generated/">ai-generated/</summary>
+                <ul>
+                  <li>
+                    <a
+                      href="https://duffinsdrive.neocities.org/documents/ai-generated/First%20Item%20Ever%20Uploaded%20to%20the%20Internet%20Archive"
+                      title="First Items Ever Uploaded to the Internet Archive.html"
+                      target="_blank"
+                    >
+                      First Items Ever Uploaded to the Internet Archive.html
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://duffinsdrive.neocities.org/documents/ai-generated/Time%20Does%20Not%20Exist"
+                      title="Time Does Not Exist.html"
+                      target="_blank"
+                    >
+                      Time Does Not Exist.html
+                    </a>
+                  </li>
+                </ul>
+              </details>
+
+              <ul>
+                <li>
+                  <a href="" title="placeholder" target="_blank">placeholder</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+
+          <li>
+            <details>
+              <summary title="images/">images/</summary>
+              <ul>
+                <li>
+                  <a
+                    href="https://duffinsdrive.neocities.org/images/neocities.png"
+                    title="neocities.png"
+                    target="_blank"
+                  >
+                    neocities.png
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+
+          <li>
+            <a href="" title="placeholder" target="_blank">placeholder</a>
+          </li>
+        </ul>
+      </details>
+    </div>
+
+    <hr />
+
+    <footer>
+      <p>I want a public place to store random shit.</p>
+      <p>
+        This includes:
+        <br />
+        <br />
+        - images
+        <br />
+        - ai stuff
+        <br />
+        - other random shit
+      </p>
+
+      <p><a href="">GitHub mirror</a></p>
+      <p>
+        Page created: November 23, 2026 at 9:32 PM (MDT)
+        <br />
+        Last updated:
+        <span
+          id="last-updated"
+          title="Automatically detected last modification time"
+        >
+          Loading...
+        </span>
+        <span title="Mountain Daylight Time">(MDT)</span>
+      </p>
+    </footer>
+
+    <script>
+      (function () {
+        const lastMod = new Date(document.lastModified);
+        const dateOptions = { year: "numeric", month: "long", day: "numeric" };
+        const timeOptions = {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true
+        };
+
+        const formattedDate = lastMod.toLocaleDateString("en-US", dateOptions);
+        const formattedTime = lastMod.toLocaleTimeString("en-US", timeOptions);
+
+        document.getElementById("last-updated").textContent =
+          `${formattedDate} at ${formattedTime}`;
+      })();
+    </script>
+  </body>
+</html>
