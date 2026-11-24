@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>First Item Ever Uploaded to the Internet Archive — Fact-Check</title>
+<style>
+  :root{
+    --bg:#f6f5f1;
+    --surface:#ffffff;
+    --surface-2:#efeee8;
+    --ink:#1c1b18;
+    --ink-2:#4a4842;
+    --ink-3:#7a776d;
+    --line:#ddd9cf;
+    --accent:#9a3412;
+    --accent-soft:#fdf0e8;
+    --teal:#0f5c52;
+    --teal-soft:#e6f2ef;
+    --amber:#92400e;
+    --amber-soft:#fef6e0;
+    --red:#991b1b;
+    --red-soft:#fdf0f0;
+    --green:#166534;
+    --green-soft:#ecfdf3;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141311;
+      --surface:#1e1d1a;
+      --surface-2:#26251f;
+      --ink:#ece9e0;
+      --ink-2:#b8b4a8;
+      --ink-3:#8a877d;
+      --line:#33322c;
+      --accent:#f0956a;
+      --accent-soft:#33201a;
+      --teal:#5fc4b3;
+      --teal-soft:#1a2e2a;
+      --amber:#e8b34b;
+      --amber-soft:#2e2614;
+      --red:#f08a8a;
+      --red-soft:#331e1e;
+      --green:#6fdc96;
+      --green-soft:#1a2e20;
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+  a:hover{opacity:.85}
+  button,summary,[role="tab"]{min-height:44px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px 64px}
+
+  /* Hero */
+  .hero{padding:40px 0 8px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,6vw,48px);line-height:1.08;letter-spacing:-.01em;margin:0 0 16px}
+  .lede{font-size:18px;line-height:1.6;color:var(--ink-2);max-width:680px;margin:0 0 8px}
+  .lede strong{color:var(--ink)}
+  .meta-line{font-family:var(--mono);font-size:12.5px;color:var(--ink-3);margin-top:14px}
+
+  .verdict-box{background:var(--ink);color:#f5f3ec;border-radius:10px;padding:22px 22px 18px;margin:28px 0 8px}
+  @media (prefers-color-scheme: dark){.verdict-box{background:#ece9e0;color:#1c1b18}}
+  .verdict-box .vb-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.65;margin:0 0 8px}
+  .verdict-box p.vb-main{font-family:var(--serif);font-size:clamp(19px,3.4vw,24px);line-height:1.35;margin:0 0 10px}
+  .verdict-box p.vb-sub{font-size:14.5px;line-height:1.6;opacity:.85;margin:0}
+
+  /* Tabs */
+  .tabs{margin:28px 0 0}
+  .tablist{display:flex;gap:8px;flex-wrap:wrap}
+  .tablist [role="tab"]{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font-family:var(--sans);font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;cursor:pointer}
+  .tablist [role="tab"][aria-selected="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+  @media (prefers-color-scheme: dark){.tablist [role="tab"][aria-selected="true"]{color:#10201d}}
+  .tabpanel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;margin-top:14px}
+  .tabpanel h3{font-family:var(--serif);font-size:22px;margin:0 0 6px;line-height:1.25}
+  .tabpanel p{margin:0 0 10px;color:var(--ink-2);font-size:15.5px}
+  .tabpanel p:last-child{margin-bottom:0}
+  .conf{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;margin-bottom:12px}
+  .conf-med{background:var(--amber-soft);color:var(--amber)}
+  .conf-medhigh{background:var(--teal-soft);color:var(--teal)}
+  .conf-high{background:var(--green-soft);color:var(--green)}
+
+  /* Sections */
+  section{margin-top:52px}
+  h2{font-family:var(--serif);font-size:clamp(24px,4vw,30px);line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+  .sec-intro{color:var(--ink-2);font-size:16px;max-width:700px;margin:0 0 20px}
+  h3.sub{font-size:17px;margin:26px 0 8px}
+  p.body{color:var(--ink-2);font-size:15.5px;margin:0 0 12px}
+  p.body strong, li strong{color:var(--ink)}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+  .card.accent{border-top:4px solid var(--teal);border-radius:4px 4px 12px 12px}
+  .card.warn{border-top:4px solid var(--amber);border-radius:4px 4px 12px 12px}
+  .card h3{font-family:var(--serif);font-size:20px;margin:0 0 4px;line-height:1.3}
+  .card p{color:var(--ink-2);font-size:15px;margin:0 0 10px}
+  .card p:last-child{margin-bottom:0}
+  .id-chip{font-family:var(--mono);font-size:13px;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:8px 12px;word-break:break-all;margin:10px 0}
+  dl.facts{display:grid;grid-template-columns:130px 1fr;gap:6px 16px;margin:14px 0 4px;font-size:14.5px}
+  dl.facts dt{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);padding-top:2px}
+  dl.facts dd{margin:0;color:var(--ink)}
+  dl.facts dd.mono{font-family:var(--mono);font-size:13.5px;word-break:break-all}
+  @media (max-width:560px){dl.facts{grid-template-columns:1fr}dl.facts dt{padding-top:8px}}
+
+  .src{font-size:13px;color:var(--ink-3);margin-top:10px}
+  .src a{font-size:13px}
+
+  blockquote{margin:16px 0;padding:4px 0 4px 18px;border-left:3px solid var(--accent);font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink)}
+  blockquote + .src{margin-top:2px;padding-left:21px}
+
+  /* Table */
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+  th{ text-align:left;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface-2)}
+  td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  tr:last-child td{border-bottom:none}
+  td strong{color:var(--ink)}
+
+  /* Timeline */
+  .timeline{position:relative;margin:8px 0 0;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .tl-item{position:relative;padding:0 0 22px}
+  .tl-item:last-child{padding-bottom:2px}
+  .tl-item::before{content:"";position:absolute;left:-25px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--teal)}
+  .tl-item.hot::before{border-color:var(--accent)}
+  .tl-date{font-family:var(--mono);font-size:12.5px;color:var(--accent);font-weight:700;letter-spacing:.03em}
+  .tl-item h4{margin:2px 0 4px;font-size:16px}
+  .tl-item p{margin:0;color:var(--ink-2);font-size:14.5px;max-width:640px}
+
+  /* Claims */
+  .claim{border:1px solid var(--line);border-radius:12px;background:var(--surface);margin:12px 0;overflow:hidden}
+  .claim summary{cursor:pointer;list-style:none;display:flex;gap:12px;align-items:flex-start;padding:16px 18px;min-height:52px}
+  .claim summary::-webkit-details-marker{display:none}
+  .claim summary .q{flex:1;font-weight:600;font-size:15.5px;line-height:1.45}
+  .claim .claim-body{padding:0 18px 18px 18px;color:var(--ink-2);font-size:15px}
+  .claim .claim-body p{margin:0 0 10px}
+  .claim .claim-body p:last-child{margin-bottom:0}
+  .badge{flex-shrink:0;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.05em;padding:4px 10px;border-radius:999px;margin-top:2px}
+  .b-false{background:var(--red-soft);color:var(--red)}
+  .b-partly{background:var(--amber-soft);color:var(--amber)}
+  .b-true{background:var(--green-soft);color:var(--green)}
+  .b-mislead{background:var(--accent-soft);color:var(--accent)}
+  .b-unsup{background:var(--surface-2);color:var(--ink-2)}
+
+  .note{background:var(--amber-soft);border-radius:10px;padding:16px 18px;font-size:14.5px;color:var(--ink);margin:16px 0}
+  .note strong{display:block;margin-bottom:4px}
+  .note p{margin:0;color:var(--ink-2)}
+
+  ul.tight{margin:8px 0 12px;padding-left:22px;color:var(--ink-2);font-size:15.5px}
+  ul.tight li{margin-bottom:8px}
+  ol.openq{margin:8px 0;padding-left:22px;color:var(--ink-2);font-size:15.5px}
+  ol.openq li{margin-bottom:14px}
+  ol.openq strong{color:var(--ink)}
+
+  @media (max-width:640px){
+    .table-scroll{overflow:visible;border:none;background:transparent;border-radius:0}
+    table{min-width:0}
+    thead{display:none}
+    tbody tr{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+    tbody td{display:block;border-bottom:1px solid var(--line);padding:10px 16px}
+    tbody td:last-child{border-bottom:none}
+    tbody td:first-child{background:var(--surface-2)}
+    tbody td:nth-child(2)::before{content:"Wayback capture — ";font-weight:700;color:var(--ink)}
+    tbody td:nth-child(3)::before{content:"Item upload — ";font-weight:700;color:var(--ink)}
+    tbody td:first-child::before{content:none}
+  }
+  .sources{font-size:14px;color:var(--ink-2)}
+  .sources li{margin-bottom:10px;word-break:break-word}
+  footer{margin-top:56px;border-top:1px solid var(--line);padding-top:18px;font-size:13px;color:var(--ink-3);line-height:1.6}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+  .toc a{display:inline-flex;align-items:center;min-height:36px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13.5px;font-weight:600;text-decoration:none;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">Fact-check · Internet Archive history</p>
+    <h1>What was the first item ever uploaded to the Internet Archive?</h1>
+    <p class="lede">The honest answer is that <strong>there is no single definitive “first item.”</strong> The question splits into at least three different things — a web crawl, a modern archive.org item, and the first item of a named collection — and the Archive’s own metadata does not support a clean “first upload” in 1996.</p>
+    <p class="meta-line">Research checked 22 November 2026 · Primary sources: archive.org, Internet Archive Blog, Wayback Machine</p>
+
+    <div class="verdict-box">
+      <p class="vb-label">Bottom line</p>
+      <p class="vb-main">Don’t say “the first item uploaded to the Internet Archive was X in 1996” — without a qualifier, that claim isn’t supported.</p>
+      <p class="vb-sub">In 1996–2001 the Archive stored web crawls on tape. There was no public archive.org item-upload system. The item system that produces an identifier, an <em>addeddate</em>, and an “Uploaded by …” line only yields a datable first item in 2001.</p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <a href="#answers">The three answers</a>
+      <a href="#earliest-item">Earliest item in detail</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#claims">Claims checked</a>
+      <a href="#method">How this was checked</a>
+      <a href="#open">Open questions</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </header>
+
+  <!-- THREE ANSWERS -->
+  <section id="answers" style="margin-top:36px">
+    <h2>Which “first” do you mean?</h2>
+    <p class="sec-intro">Pick a meaning below. Each one has a different best-supported answer — and a different level of confidence.</p>
+
+    <div class="tabs">
+      <div class="tablist" role="tablist" aria-label="Meanings of first">
+        <button role="tab" id="tab-1" aria-selected="true" aria-controls="panel-1">Earliest item by added date</button>
+        <button role="tab" id="tab-2" aria-selected="false" aria-controls="panel-2">First thing archived (web crawl)</button>
+        <button role="tab" id="tab-3" aria-selected="false" aria-controls="panel-3">First item at founding, 1996</button>
+        <button role="tab" id="tab-4" aria-selected="false" aria-controls="panel-4">First in a named collection</button>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+        <span class="conf conf-medhigh">Confidence: Medium-high — earliest in the index</span>
+        <h3>Larry King Live, CNN — 14 March 2001, 05:00 UTC</h3>
+        <p>The earliest item in the current archive.org advanced-search index with a credible, corroborated added date. Identifier <span style="font-family:var(--mono)">CNN_20010314_050000_Larry_King_Live</span> — “Uploaded by TV Archive on March 14, 2001,” with date, addeddate and publicdate all agreeing at 2001-03-14T05:00:00Z.</p>
+        <p>This is <strong>not</strong> proof that no earlier item ever existed — see the caveats in the detailed section below.</p>
+        <p class="src">Source: archive.org — <a href="https://archive.org/details/CNN_20010314_050000_Larry_King_Live">item page</a> · Advanced Search index, checked 22 Nov 2026</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>
+        <span class="conf conf-med">Confidence: Medium</span>
+        <h3>A BBC page dated 1 March 1995 — imported, not a founding upload</h3>
+        <p>The Wayback Machine’s earliest known page is described as a landing page for the BBC, archived 1 March 1995. But that crawl <strong>predates the Archive’s founding</strong> and was imported later — it is not a 1996 founding upload.</p>
+        <p>The first founding-era capture that can be opened today is the <strong>Microsoft Internet Explorer download page, 10 May 1996, 14:42:31 UTC</strong>, verified from the timestamp embedded in the Wayback URL itself. The BBC date rests on a Wikipedia citation flagged as malformed.</p>
+        <p class="src">Sources: Wikipedia (Wayback Machine) · <a href="https://web.archive.org/web/19960510144231/http://www.microsoft.com/ie/IE.HTM">Wayback capture of the IE page</a> · Chris R. Cook, “The Oldest Pages in the Wayback Machine,” 25 Oct 2024</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden>
+        <span class="conf conf-high">Confidence: High — that no named item exists</span>
+        <h3>No item is named — in any official source</h3>
+        <p>No official history, blog post, or interview found names a first item uploaded by Brewster Kahle or the Archive at its founding in 1996. In 1996–2001 the Archive stored web crawls on tape; there was no public item-upload system.</p>
+        <blockquote>“We started by archiving the most transient of media, which was the World Wide Web’s pages. We did that for five years before we even made the Wayback Machine.”</blockquote>
+        <p class="src">— Brewster Kahle, 25th-anniversary keynote · Source: <a href="https://blog.archive.org/2021/10/22/turns-out-its-not-the-technology-its-the-people/">Internet Archive Blog, 22 Oct 2021</a></p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" hidden>
+        <span class="conf conf-high">Confidence: High — stated by the Archive itself</span>
+        <h3>Live Music Archive: Rusted Root, not the Grateful Dead</h3>
+        <p>The first Live Music Archive item was <strong>Rusted Root at Alpine Valley, 24 Aug 2001</strong> (identifier <span style="font-family:var(--mono)">rr01-08-24.shnf</span>), uploaded by Jon Aizen on <strong>12 Aug 2002</strong> — stated explicitly by the Internet Archive’s own blog.</p>
+        <p>For Prelinger, there is no single first item: the earliest items share one bulk ingest date, <strong>16 July 2002</strong>.</p>
+        <p class="src">Source: <a href="https://blog.archive.org/2022/08/12/celebrating-20-years-of-the-live-music-archive/">Internet Archive Blog, 12 Aug 2022</a> · <a href="https://archive.org/details/rr01-08-24.shnf">Rusted Root item page</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAYBACK VS ITEM -->
+  <section id="distinction">
+    <h2>First, don’t conflate two different systems</h2>
+    <p class="sec-intro">A Wayback Machine capture and an archive.org item upload are different kinds of object, from different eras. Most wrong answers online mix them up.</p>
+    <div class="table-scroll" role="region" aria-label="Wayback capture versus item upload comparison">
+      <table>
+        <thead><tr><th scope="col"></th><th scope="col">Wayback Machine capture</th><th scope="col">archive.org item upload</th></tr></thead>
+        <tbody>
+          <tr><td><strong>What it is</strong></td><td>A snapshot of a live web page, stored with a timestamp URL</td><td>A container (identifier) holding files + metadata on archive.org</td></tr>
+          <tr><td><strong>Began</strong></td><td>Crawling 1995 (imported) / Oct 1996 (the Archive’s own first crawl); data kept on tape 1996–2001</td><td>Item records with trustworthy added dates begin in 2001 in the current index</td></tr>
+          <tr><td><strong>Public access</strong></td><td><strong>25 Oct 2001</strong> — Wayback Machine launched</td><td>Items became publicly searchable as they were created; Live Music Archive Aug 2002, Prelinger batch Jul 2002</td></tr>
+          <tr><td><strong>Earliest example</strong></td><td>BBC page, 1 Mar 1995 (claimed); IE page, 10 May 1996, 14:42 UTC (verified URL)</td><td>CNN Larry King Live, 14 Mar 2001, 05:00 UTC</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Sources: Wikipedia (Wayback Machine), read 22 Nov 2026 · archive.org Advanced Search, checked 22 Nov 2026</p>
+  </section>
+
+  <!-- EARLIEST ITEM DETAIL -->
+  <section id="earliest-item">
+    <h2>The earliest datable item: Larry King Live, 14 March 2001</h2>
+    <p class="sec-intro">This is the strongest answer to “earliest item by upload date” — with its limits stated plainly.</p>
+
+    <div class="card accent">
+      <h3>Larry King Live : CNN : March 14, 2001 12:00am–12:59am EST</h3>
+      <div class="id-chip">CNN_20010314_050000_Larry_King_Live</div>
+      <dl class="facts">
+        <dt>Date</dt><dd class="mono">2001-03-14T05:00:00Z</dd>
+        <dt>Added date</dt><dd class="mono">2001-03-14T05:00:00Z</dd>
+        <dt>Public date</dt><dd class="mono">2001-03-14T05:00:00Z — all three agree</dd>
+        <dt>Media type</dt><dd>Movies</dd>
+        <dt>Uploader</dt><dd>TV Archive — item page: “Uploaded by TV Archive on March 14, 2001”</dd>
+        <dt>Item page</dt><dd><a href="https://archive.org/details/CNN_20010314_050000_Larry_King_Live">archive.org/details/CNN_20010314_050000_Larry_King_Live</a></dd>
+      </dl>
+      <p style="margin-top:12px">It is the first of only two items with that added date. The second, three hours later, is the 03:00 EST edition of the same show (<span style="font-family:var(--mono)">CNN_20010314_080000_Larry_King_Live</span>).</p>
+      <p class="src">Source: archive.org — item page and Advanced Search range query <span style="font-family:var(--mono)">addeddate:[2001-03-14 TO 2001-03-14]</span> → 2 results, checked 22 Nov 2026</p>
+    </div>
+
+    <div class="note">
+      <strong>⚠ Caveats — read these before citing it as “the first”</strong>
+      <p>• This is the earliest item <em>in the current advanced-search index</em> with a corroborated added date — not proof no earlier item ever existed.<br>
+      • Items whose added date was lost or placeholdered (<span style="font-family:var(--mono)">0000-01-01</span>, chiefly etree / Grateful Dead items with public dates 2004–2011) cannot be dated from metadata alone, so an earlier item could in principle hide among them — but none has any evidence of a pre-2001 upload, and the Live Music Archive itself did not start until July–August 2002.<br>
+      • The CNN items are TV recordings from the TV News Archive feed, not a “public upload” in the modern sense. There is no evidence they were the first thing anyone uploaded — only that they are the earliest surviving item records with a trustworthy creation timestamp.</p>
+    </div>
+
+    <h3 class="sub">The runner-up that doesn’t hold up: Democracy Now!, “17 July 2000”</h3>
+    <div class="card warn">
+      <h3>Democracy Now! Monday, July 17, 2000 — debunked as a 2000 upload</h3>
+      <div class="id-chip">dn2000-0717</div>
+      <p>On paper this item looks earlier: added date 2000-07-17. It is the <em>only</em> item in the index with that added date, and a range search for 18 July 2000 – 13 March 2001 returns <strong>zero</strong> items.</p>
+      <p>But its own item page gives it away: <strong>“Uploaded by Democracy Now! on May 18, 2018,”</strong> public date 2018-05-18T19:49:38Z, scanned with the “Internet Archive HTML5 Uploader 1.6.3” — a modern uploader. The 2000-07-17 added date was evidently backfilled to the broadcast date when the item was (re)created in 2018. <strong>Not a 2000 upload.</strong></p>
+      <p class="src">Source: archive.org — <a href="https://archive.org/details/dn2000-0717">item page for dn2000-0717</a>, checked 22 Nov 2026</p>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <h2>Timeline: how the “firsts” actually line up</h2>
+    <p class="sec-intro">Every date below is from the research sources listed at the end of this page. Hedges are kept where the sources hedge.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">1 MARCH 1995 — CLAIMED</div>
+        <h4>BBC page archived</h4>
+        <p>Described on Wikipedia as the Wayback Machine’s earliest known page, a BBC landing page. The crawl predates the Archive’s founding and was imported later. Its Wikipedia citation is flagged as malformed — treat the exact date as claimed, not verified. Chris Cook’s 2024 research reports March 1995 crawls of bbcnc.org.uk (BBC Networking Club) and 33 pages from 1995 in total.</p>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-date">10 MAY 1996</div>
+        <h4>Internet Archive founded — and the IE capture</h4>
+        <p>Brewster Kahle founded the Archive in San Francisco on 10 May 1996, alongside Bruce Gilliat, around the same time he began Alexa Internet. The Microsoft Internet Explorer download page capture is timestamped this same day at 14:42:31 UTC — verified from the live Wayback URL.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">OCTOBER 1996</div>
+        <h4>The Archive’s own first crawl</h4>
+        <p>“In October of 1996, engineers at the San Francisco-based Internet Archive launched their first web crawlers, taking snapshots of web pages. At the time, the World Wide Web was only 2.5 terabytes in size.” The Archive’s 25th-anniversary timeline notes the crawlers captured first web pages “including MTV” — a set of pages, not one named item.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">LATE 1999</div>
+        <h4>First expansion beyond the web: Prelinger</h4>
+        <p>The Archive expanded beyond the web archive “beginning with the Prelinger Archives” — the first non-web collection. No single Prelinger film is singled out as first; the earliest items arrive later as a bulk batch (see 16 July 2002).</p>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-date">14 MARCH 2001 · 05:00 UTC</div>
+        <h4>Earliest datable item: Larry King Live on CNN</h4>
+        <p>Identifier CNN_20010314_050000_Larry_King_Live, uploaded by TV Archive. Date, added date and public date all agree — the earliest corroborated item record in the current index.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">25 OCTOBER 2001</div>
+        <h4>Wayback Machine opens to the public</h4>
+        <p>Launched for public access with, by then, over 10 billion archived pages already collected. From 1996 to 2001 that data had been kept on digital tape.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">16 JULY 2002</div>
+        <h4>Prelinger bulk ingest</h4>
+        <p>The earliest Prelinger items in advanced search share a single added date, 2002-07-16T00:00:00Z — e.g. ToMarket1942_2, StoryofT1956, Berkeley1923. A mass ingest, not a first upload.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">12 AUGUST 2002</div>
+        <h4>First Live Music Archive item: Rusted Root</h4>
+        <p>Jon Aizen uploaded Rusted Root’s Alpine Valley recording from 24 Aug 2001 (rr01-08-24.shnf). Aizen had proposed the collection in July 2002 and emailed the etree list on 23 July 2002 offering “unlimited storage, unlimited bandwidth, forever, for free.”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1996 -->
+  <section id="founding">
+    <h2>What about 1996 itself?</h2>
+    <p class="body">Official sources name <strong>no first item</strong> from the founding. The Archive’s own item “The Wayback Machine’s First Crawl 1996” describes crawlers launched in October 1996 by Kahle and Bruce Gilliat — bulk snapshots, not a single upload. Kahle’s founding paper “Preserving the Internet” (4 Nov 1996, for <em>Scientific American</em>, March 1997) likewise names no first item:</p>
+    <blockquote>“The Internet Archive is such a new organization that is collecting the public materials on the Internet to construct a digital library. The first step is to preserve the contents of this new medium.”</blockquote>
+    <p class="body">Secondary reporting (IEEE Spectrum; Rosenzweig) agrees crawls began September–October 1996, with Alexa donating bimonthly snapshots, embargoed about six months. Anyone claiming a single 1996 “first upload” is conflating the web crawl with the later item system.</p>
+    <p class="src">Sources: <a href="https://archive.org/details/wayback-machine-1996">archive.org — “The Wayback Machine’s First Crawl 1996”</a> · <a href="https://blog.archive.org/2021/10/22/turns-out-its-not-the-technology-its-the-people/">Internet Archive Blog, Kahle keynote, 22 Oct 2021</a> · Wikipedia (Internet Archive)</p>
+
+    <h3 class="sub">The Wayback “first page” claims conflict with each other</h3>
+    <p class="body"><strong>BBC, March 1995 (claimed):</strong> the Wayback Machine article says the earliest known page is a BBC landing page archived 1 March 1995 — but the footnote is flagged in the article itself as malformed (“<span style="font-family:var(--mono)">|archive-url=</span> is malformed: timestamp”). Cook (2024) independently reports March 1995 crawls of bbcnc.org.uk reaching the Wayback Machine later — and notes they predate both the Archive (May 1996) and Alexa (April 1996), so they cannot be “the first thing Kahle archived at founding.”</p>
+    <p class="body"><strong>USA Today, December 1996 (contradicted):</strong> the current Wikipedia <em>Internet Archive</em> article says “The first and oldest page ever archived was a December 1996 edition of USA Today,” citing Rob Pegoraro (<em>USA Today</em>, 29 Oct 2021). An older revision of the same article said instead that the earliest known page was the Internet Explorer download page, saved 10 May 1996 at 14:42 UTC. Since a May 1996 capture verifiably exists, a December 1996 page cannot be the “first and oldest” — unless “first” is meant in some narrower, unstated sense.</p>
+    <p class="body"><strong>MTV (among the earliest, not shown to be first):</strong> the Archive’s 25th-anniversary timeline and several histories cite an MTV capture among the earliest 1996 captures, but no single MTV page is shown to be <em>the</em> first.</p>
+    <p class="src">Sources: Wikipedia (Internet Archive &amp; Wayback Machine), read 22 Nov 2026 · <a href="https://web.archive.org/web/19960510144231/http://www.microsoft.com/ie/IE.HTM">IE capture, 10 May 1996 14:42:31 UTC</a> · <a href="https://www.chrisrcook.com/2024/10/25/the-oldest-pages-in-the-wayback-machine/">Chris R. Cook, 25 Oct 2024</a></p>
+  </section>
+
+  <!-- CLAIMS -->
+  <section id="claims">
+    <h2>Common claims, checked</h2>
+    <p class="sec-intro">Tap any claim to see the evidence. Verdicts follow the primary sources — the Archive’s own blog and item metadata first.</p>
+
+    <details class="claim">
+      <summary><span class="q">“The first item was a Grateful Dead concert — a rare 1968 recording.”</span><span class="badge b-false">FALSE</span></summary>
+      <div class="claim-body">
+        <p>The Internet Archive’s own blog (12 Aug 2022) anticipates and rejects this directly:</p>
+        <blockquote style="font-size:15.5px">“It would be a great story to have the first item as part of the collection to be some rare Grateful Dead recording from 1968, but it is actually an unassuming Rusted Root audience recording from August 24, 2001 uploaded to the new Live Music Archive collection by Aizen on August 12, 2002.”</blockquote>
+        <p>The item is <strong>Rusted Root Live at Alpine Valley on 2001-08-24</strong> (<span style="font-family:var(--mono)">rr01-08-24.shnf</span>), East Troy, WI, taped by Jeff Kempka. Track 12, “Ecstasy,” features Mark Karan of Ratdog (Bob Weir’s side project) — the Grateful Dead connection the blog notes. Grateful Dead permission “came a little while later, through Brewster’s connection to John Perry Barlow.” Dead recordings are the cornerstone of the collection today, but they are not its first item — and the collection did not exist before 2002.</p>
+        <p class="src">Source: <a href="https://blog.archive.org/2022/08/12/celebrating-20-years-of-the-live-music-archive/">Internet Archive Blog, 12 Aug 2022</a> · <a href="https://archive.org/details/rr01-08-24.shnf">Item page</a></p>
+      </div>
+    </details>
+
+    <details class="claim">
+      <summary><span class="q">“The first item was a Prelinger film.”</span><span class="badge b-partly">PARTLY TRUE</span></summary>
+      <div class="claim-body">
+        <p><strong>True as a collection:</strong> in late 1999 the Archive expanded beyond the web archive “beginning with the Prelinger Archives” — Prelinger is the first non-web collection.</p>
+        <p><strong>False as a single item:</strong> the earliest Prelinger items share one bulk added date, 2002-07-16T00:00:00Z — e.g. <span style="font-family:var(--mono)">ToMarket1942_2</span> (“To Market, To Market (Part II)”, 1942), <span style="font-family:var(--mono)">StoryofT1956</span>, <span style="font-family:var(--mono)">Berkeley1923</span>. That is a mass ingest, not a first upload, and no Prelinger item is singled out in any source as <em>the</em> first.</p>
+        <p class="src">Source: Wikipedia (Internet Archive) · archive.org Advanced Search, collection:prelinger sorted by added date, checked 22 Nov 2026</p>
+      </div>
+    </details>
+
+    <details class="claim">
+      <summary><span class="q">“The first thing archived was an Alexa crawl — Alexa donated the first crawls.”</span><span class="badge b-true">TRUE — IN SUBSTANCE</span></summary>
+      <div class="claim-body">
+        <p>Alexa Internet was founded in April 1996 by Kahle (with Bruce Gilliat) and donated its crawl data to the Internet Archive from that year. IEEE Spectrum describes Kahle trawling the web with a crawler developed for Alexa, with Alexa donating its twice-yearly global web crawls.</p>
+        <p>The early web archive <em>is</em> largely Alexa crawl data, donated in bulk and embargoed ~6 months — but there is no identifiable “first Alexa page” in public sources. True in substance; not a single item.</p>
+        <p class="src">Source: Timeline of digital preservation · IEEE Spectrum, “A Memory of Webs Past” (secondary reporting in research, 22 Nov 2026)</p>
+      </div>
+    </details>
+
+    <details class="claim">
+      <summary><span class="q">“The first items were early texts / Project Gutenberg books.”</span><span class="badge b-unsup">UNSUPPORTED</span></summary>
+      <div class="claim-body">
+        <p>Project Gutenberg (founded 1971 by Michael Hart) is the oldest digital library and a long-standing donor of public-domain books to the Archive — but no source names a Gutenberg text as the first archive.org item, and the item index shows <strong>no 1990s added dates at all</strong>. The earliest <em>content</em> dates on archive.org are 19th-century and earlier — that is publication date, not upload date. The Archive’s book-scanning programme itself postdates the web archive by years.</p>
+        <p class="src">Source: archive.org Advanced Search — <span style="font-family:var(--mono)">addeddate:[1990-01-01 TO 1999-12-31]</span> → 0 results, checked 22 Nov 2026</p>
+      </div>
+    </details>
+
+    <details class="claim">
+      <summary><span class="q">“The first / oldest page was a December 1996 USA Today.”</span><span class="badge b-false">CONTRADICTED</span></summary>
+      <div class="claim-body">
+        <p>This is the current wording of Wikipedia’s <em>Internet Archive</em> article, citing Pegoraro (<em>USA Today</em>, 29 Oct 2021). It conflicts with (a) the same article’s older wording (IE page, 10 May 1996, 14:42 UTC), (b) the live Wayback URL for that IE page, and (c) the <em>Wayback Machine</em> article’s BBC March 1995 claim. Treat it as a Wikipedia edit, not a primary-source fact.</p>
+        <p class="src">Source: Wikipedia (Internet Archive), read 22 Nov 2026 · <a href="https://web.archive.org/web/19960510144231/http://www.microsoft.com/ie/IE.HTM">IE capture</a></p>
+      </div>
+    </details>
+
+    <details class="claim">
+      <summary><span class="q">“The oldest Wayback pages are from May 1996 — the Archive began archiving in May 1996.”</span><span class="badge b-mislead">MISLEADING</span></summary>
+      <div class="claim-body">
+        <p>The Archive was founded 10 May 1996, but its own first crawl was <strong>October 1996</strong>, and the Wayback index contains imported 1995 crawls (BBC Networking Club, March 1995) that predate the organisation. May 1996 is the founding date — not the date of the oldest capture.</p>
+        <p class="src">Source: <a href="https://archive.org/details/wayback-machine-1996">archive.org — “The Wayback Machine’s First Crawl 1996”</a> · Wikipedia (Wayback Machine)</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <h2>How this was checked — and why the obvious search misleads</h2>
+    <p class="sec-intro">The Archive has three different date fields, and only one of them means “when the item was created.” Sorting by the wrong one produces confident, wrong answers.</p>
+
+    <div class="card">
+      <h3>What the fields actually mean</h3>
+      <p>From the Internet Archive’s own metadata schema:</p>
+      <ul class="tight">
+        <li><strong><span style="font-family:var(--mono)">addeddate</span></strong> — for dates before Dec 2019: “Date and time in UTC that the item was created [on] archive.org,” automatically set when the item directory is created in the file system. In some cases a directory is created with metadata but no media files before scanning, so addeddate reflects creation regardless of when media was added. (From Dec 2019 onward it instead marks when the item was added to the public search engine.)</li>
+        <li><strong><span style="font-family:var(--mono)">publicdate</span></strong> — “The date and time in UTC that the item was made public on archive.org,” set when the derive task finishes.</li>
+        <li><strong><span style="font-family:var(--mono)">date</span></strong> — the <em>content’s</em> publication date, not the upload date.</li>
+      </ul>
+      <p class="src">Source: <a href="https://archive.org/developers/metadata-schema/index.html">archive.org — Metadata Schema</a></p>
+    </div>
+
+    <h3 class="sub">Three naive sorts, three false “firsts” (tested live, 22 Nov 2026)</h3>
+    <ul class="tight">
+      <li><strong>Sort by addeddate ascending:</strong> the first 10 hits all show <span style="font-family:var(--mono)">addeddate: 0000-01-01T00:00:00Z</span> — e.g. Grateful Dead <span style="font-family:var(--mono)">gd1966-03-12.sbd.bershaw.9516.shnf</span> (content date 1966-03-12, public date 2005-05-02). <span style="font-family:var(--mono)">0000-01-01</span> is a placeholder for migrated etree items, not an upload date.</li>
+      <li><strong>Sort by publicdate ascending:</strong> first hits show public date 1995-01-01 but added dates in 2019 — e.g. <span style="font-family:var(--mono)">RokGazet_1995_n07_katalogo</span>. There, publicdate is the content’s publication year, backfilled.</li>
+      <li><strong>Sort by date ascending:</strong> worst of all — <span style="font-family:var(--mono)">date</span> is content date, so 19th-century books and 1893 films would “win.”</li>
+    </ul>
+
+    <h3 class="sub">The range queries that narrow it down</h3>
+    <ul class="tight">
+      <li><span style="font-family:var(--mono)">addeddate:[1990-01-01 TO 1999-12-31]</span> → <strong>0 items</strong>. Nothing in the index claims a 1990s added date.</li>
+      <li><span style="font-family:var(--mono)">addeddate:[2000-07-17 TO 2000-07-17]</span> → <strong>1 item</strong>: only <span style="font-family:var(--mono)">dn2000-0717</span> (later shown to be backfilled — see above).</li>
+      <li><span style="font-family:var(--mono)">addeddate:[2000-07-18 TO 2001-03-13]</span> → <strong>0 items</strong>. An empty gap of nearly eight months.</li>
+      <li><span style="font-family:var(--mono)">addeddate:[2001-03-14 TO 2001-03-14]</span> → <strong>2 items</strong>: the two Larry King Live editions, 05:00 and 08:00 UTC.</li>
+      <li>One more dead end: <span style="font-family:var(--mono)">numeric_id</span> looks tantalisingly sequential (Rusted Root has Numeric_id 25; Prelinger’s <span style="font-family:var(--mono)">Berkeley1923</span> has 173), but the API rejects sorting by it — “[UNSUPPORTED_SORT] Cannot sort with specified field (numeric_id)” — and low numbers are scattered across 2002 added dates, so it cannot order items.</li>
+    </ul>
+    <p class="src">Source: archive.org Advanced Search JSON API (<span style="font-family:var(--mono)">advancedsearch.php</span>, sort by addeddate asc), queried 22 Nov 2026 — <a href="https://archive.org/advancedsearch.php?q=*&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=date&fl%5B%5D=addeddate&fl%5B%5D=publicdate&fl%5B%5D=mediatype&rows=10&sort%5B%5D=addeddate+asc&output=json">base query</a></p>
+  </section>
+
+  <!-- OPEN QUESTIONS -->
+  <section id="open">
+    <h2>What could not be verified</h2>
+    <p class="sec-intro">An honest fact-check ends with its gaps. These four remain open:</p>
+    <ol class="openq">
+      <li><strong>The BBC 1 March 1995 exact capture.</strong> The Wikipedia citation is flagged malformed in the article itself, and direct CDX queries to the Wayback CDX server for bbcnc.org.uk, the IE page, and usatoday.com returned HTTP 403 (access denied) on 22 Nov 2026; those requests were not repeated or bypassed. The March 1995 date therefore rests on Wikipedia plus Cook’s 2024 blog, which reports March 1995 crawls of bbcnc.org.uk without giving a 1 March timestamp or a direct Wayback URL in the text fetched. A live-browser CDX check would be needed to confirm the exact timestamp and URL.</li>
+      <li><strong>The USA Today December 1996 capture.</strong> No direct Wayback URL or timestamp was found in the sources fetched; the claim rests solely on the current Wikipedia wording and its Pegoraro citation. The IE May 1996 capture contradicts it as “first/oldest,” but the specific USA Today capture itself was not opened.</li>
+      <li><strong>Whether any pre-2001 item record was deleted or lost.</strong> The <span style="font-family:var(--mono)">0000-01-01</span> placeholders (chiefly etree items) mean the index cannot prove a negative. The CNN March 2001 item is the earliest <em>datable</em> item — not a proven absolute first upload.</li>
+      <li><strong>Any official “first item” statement.</strong> No official Internet Archive statement naming a first item was found in the IA Blog, About pages, Kahle’s 2021 keynote, or the “First Crawl” item description. If the Archive has ever published such a statement, the searches run did not surface it.</li>
+    </ol>
+  </section>
+
+  <!-- SOURCES -->
+  <section id="sources">
+    <h2>Sources</h2>
+    <p class="sec-intro">Primary sources first. All web sources were read on 22 November 2026 for this fact-check.</p>
+    <ul class="sources">
+      <li><strong>archive.org — Advanced Search (JSON API)</strong> — addeddate sorts and range queries (1990–1999: 0 hits; 2000-07-17: 1 hit; 2000-07-18–2001-03-13: 0 hits; 2001-03-14: 2 hits), publicdate sort, Prelinger collection sort, numeric_id sort error. <a href="https://archive.org/advancedsearch.php?q=*&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=date&fl%5B%5D=addeddate&fl%5B%5D=publicdate&fl%5B%5D=mediatype&rows=10&sort%5B%5D=addeddate+asc&output=json">Query</a></li>
+      <li><strong>archive.org — Metadata Schema</strong> (definitions of addeddate, publicdate, date). <a href="https://archive.org/developers/metadata-schema/index.html">archive.org/developers/metadata-schema</a></li>
+      <li><strong>archive.org — Item: Larry King Live, CNN, 14 Mar 2001.</strong> <a href="https://archive.org/details/CNN_20010314_050000_Larry_King_Live">archive.org/details/CNN_20010314_050000_Larry_King_Live</a></li>
+      <li><strong>archive.org — Item: Democracy Now!, 17 Jul 2000</strong> (uploaded 18 May 2018). <a href="https://archive.org/details/dn2000-0717">archive.org/details/dn2000-0717</a></li>
+      <li><strong>archive.org — Item: Rusted Root, Alpine Valley, 24 Aug 2001.</strong> <a href="https://archive.org/details/rr01-08-24.shnf">archive.org/details/rr01-08-24.shnf</a></li>
+      <li><strong>archive.org — Item: “The Wayback Machine’s First Crawl 1996.”</strong> <a href="https://archive.org/details/wayback-machine-1996">archive.org/details/wayback-machine-1996</a></li>
+      <li><strong>Internet Archive Blog — “Celebrating 20 Years of the Live Music Archive,” 12 Aug 2022.</strong> <a href="https://blog.archive.org/2022/08/12/celebrating-20-years-of-the-live-music-archive/">blog.archive.org</a></li>
+      <li><strong>Internet Archive Blog — Kahle, “Turns Out It’s Not the Technology, It’s the People,” 22 Oct 2021.</strong> <a href="https://blog.archive.org/2021/10/22/turns-out-its-not-the-technology-its-the-people/">blog.archive.org</a></li>
+      <li><strong>Wayback Machine — Microsoft IE download page capture, 10 May 1996, 14:42:31 UTC.</strong> <a href="https://web.archive.org/web/19960510144231/http://www.microsoft.com/ie/IE.HTM">web.archive.org/web/19960510144231/…</a></li>
+      <li><strong>Wikipedia — Internet Archive</strong> (read 22 Nov 2026). <a href="https://en.wikipedia.org/wiki/Internet_Archive">en.wikipedia.org/wiki/Internet_Archive</a></li>
+      <li><strong>Wikipedia — Wayback Machine</strong> (read 22 Nov 2026). <a href="https://en.wikipedia.org/wiki/Wayback_Machine">en.wikipedia.org/wiki/Wayback_Machine</a></li>
+      <li><strong>Chris R. Cook — “The Oldest Pages in the Wayback Machine,” 25 Oct 2024.</strong> <a href="https://www.chrisrcook.com/2024/10/25/the-oldest-pages-in-the-wayback-machine/">chrisrcook.com</a></li>
+      <li><strong>Secondary context</strong> (search results, 22 Nov 2026): IEEE Spectrum, “A Memory of Webs Past”; Timeline of digital preservation; EBSCO Brewster Kahle biography.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Fact-check compiled from the sources above, checked 22 November 2026. Verdicts carry the hedges of their sources: “earliest in the current index” is not the same as “proven first ever,” and the BBC March 1995 date remains claimed rather than independently verified. Where this page and a source disagree, the source wins.
+  </footer>
+</div>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      var panel = document.getElementById(t.getAttribute('aria-controls'));
+      if(panel){ panel.hidden = !on; }
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(t); });
+    t.addEventListener('keydown', function(e){
+      var j = null;
+      if(e.key === 'ArrowRight'){ j = (i+1) % tabs.length; }
+      if(e.key === 'ArrowLeft'){ j = (i-1+tabs.length) % tabs.length; }
+      if(j !== null){ e.preventDefault(); tabs[j].focus(); select(tabs[j]); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
